@@ -11,7 +11,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@storybook/addon-storyshots": "^5.2.1",
+    "babel-plugin-require-context-hook": "^1.0.0",
     "core-js": "^2.6.5",
+    "jest-vue-preprocessor": "^1.5.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -88,7 +91,8 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/node_modules/(?!(@storybook/.*\\.vue$))"
     ],
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
