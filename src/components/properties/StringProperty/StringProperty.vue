@@ -44,9 +44,9 @@ export default {
         this.$emit("update:value", value);
       } else if (type === "change" && this.options.lazy) {
         this.$emit("update:value", value);
+      } else {
+        this.$emit(type, event);
       }
-
-      this.$emit(type, event);
     }
   }
 };
