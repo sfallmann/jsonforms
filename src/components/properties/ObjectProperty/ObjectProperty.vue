@@ -2,7 +2,7 @@
   <component v-bind:is="layout" :title="title">
     <component
       v-for="(name, index) in propertyNames"
-      v-bind:is="getProperty(name).type.toLowerCase()"
+      v-bind:is="`p-${getProperty(name).type.toLowerCase()}`"
       :key="getProperty(name).type + '-' + index"
       :value.sync="formData[name]"
       :title="getProperty(name).title"
@@ -15,12 +15,12 @@
   </component>
 </template>
 <script>
-import FormLayout from "../layout/FormLayout";
-import SubFormLayout from "../layout/SubFormLayout";
-import StringProperty from "./StringProperty";
+import FormLayout from "../../layout/FormLayout";
+import SubFormLayout from "../../layout/SubFormLayout";
+import StringProperty from "../StringProperty/StringProperty";
 
 export default {
-  name: "form-object",
+  name: "p-object",
   props: {
     isRoot: {
       type: Boolean,
@@ -50,7 +50,7 @@ export default {
   components: {
     "form-layout": FormLayout,
     "sub-form-layout": SubFormLayout,
-    string: StringProperty
+    "p-string": StringProperty
   },
   data() {
     return {

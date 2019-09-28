@@ -1,7 +1,8 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
 
-import TextInput from "../src/components/controls/TextInput";
+import "../../../src/scss/_base.scss";
+import TextInput from "../../../src/components/controls/TextInput/TextInput.vue";
 
 export const methods = {
   onInput: action("onInput"),

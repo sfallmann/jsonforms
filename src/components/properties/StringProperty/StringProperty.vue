@@ -7,7 +7,7 @@
   />
 </template>
 <script>
-import TextInput from "../controls/TextInput";
+import TextInput from "../../controls/TextInput/TextInput";
 
 // v-for="(name, index) in propertyNames"
 // v-bind:is="getProperty(name).type"
@@ -21,7 +21,7 @@ import TextInput from "../controls/TextInput";
 // :format="getProperty(name).format"
 
 export default {
-  name: "string",
+  name: "p-string",
   props: {
     value: {
       type: String,

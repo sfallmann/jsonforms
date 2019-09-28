@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <FormObject
+    <p-object
       :title="schema.title"
       :properties="schema.properties"
       :value.sync="value"
@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import FormObject from "./components/properties/FormObject";
+import ObjectProperty from "./components/properties/ObjectProperty/ObjectProperty";
 
 export default {
   name: "app",
   components: {
-    FormObject
+    "p-object": ObjectProperty
   },
   data() {
     return {
@@ -35,14 +35,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
