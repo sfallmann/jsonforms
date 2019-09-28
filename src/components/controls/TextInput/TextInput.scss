@@ -1,7 +1,21 @@
+@import "../../../scss/_variables";
+
 .text-input {
   padding: .5rem;
 }
 
 .text-input__label {
   padding-right: 1rem;
+  font-weight: 700;
+  color: darken($primary, 20%);
+}
+
+.text-input__control {
+  border: .2rem solid $primary;
+  padding: .5rem;
+  font-size: 1.6rem;
+  border-radius: .2rem;
+  &:focus {
+    border-color: $primary-highlight;
+  }
 }

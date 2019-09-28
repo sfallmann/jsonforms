@@ -3,22 +3,13 @@
     @input="eventHandler($event, 'input')"
     @change="eventHandler($event, 'change')"
     @blur="eventHandler($event, 'blur')"
+    @focus="eventHandler($event, 'focus')"
     :label="title"
+    v-bind="options"
   />
 </template>
 <script>
 import TextInput from "../../controls/TextInput/TextInput";
-
-// v-for="(name, index) in propertyNames"
-// v-bind:is="getProperty(name).type"
-// :key="getProperty(name).type + '-' + index"
-// :value.sync="formData[name]"
-// :title="getProperty(name).title"
-// :description="getProperty(name).description"
-// :min-length="getProperty(name).minLength"
-// :max-length="getProperty(name).maxLength"
-// :pattern="getProperty(name).pattern"
-// :format="getProperty(name).format"
 
 export default {
   name: "p-string",
@@ -30,6 +21,10 @@ export default {
     title: {
       type: String,
       default: ""
+    },
+    options: {
+      type: Object,
+      default: _ => ({})
     }
   },
   components: {

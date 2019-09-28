@@ -5,12 +5,8 @@
       v-bind:is="`p-${getProperty(name).type.toLowerCase()}`"
       :key="getProperty(name).type + '-' + index"
       :value.sync="formData[name]"
-      :title="getProperty(name).title"
-      :description="getProperty(name).description"
-      :min-length="getProperty(name).minLength"
-      :max-length="getProperty(name).maxLength"
-      :pattern="getProperty(name).pattern"
-      :format="getProperty(name).format"
+      v-bind="getProperty(name)"
+      :options="getOptions(name)"
     />
   </component>
 </template>
@@ -38,7 +34,7 @@ export default {
       type: String,
       default: ""
     },
-    displayOptions: {
+    options: {
       type: Object,
       default: _ => ({})
     },
@@ -72,6 +68,9 @@ export default {
   methods: {
     getProperty(name) {
       return this.properties[name];
+    },
+    getOptions() {
+      return this.options[name];
     },
     mapNamesToValues() {
       // TODO : Expand conditions beyond string and object types
