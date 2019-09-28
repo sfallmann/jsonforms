@@ -15,8 +15,8 @@
   </component>
 </template>
 <script>
-import FormLayout from "../../layout/FormLayout";
-import SubFormLayout from "../../layout/SubFormLayout";
+import FormLayout from "../../layout/form/FormLayout";
+import SubFormLayout from "../../layout/form/SubFormLayout";
 import StringProperty from "../StringProperty/StringProperty";
 
 export default {
