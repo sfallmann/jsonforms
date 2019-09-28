@@ -1,17 +1,258 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots TextInput default 1`] = `
+exports[`Storyshots SelectInput default 1`] = `
 <div
-  class="text-input"
+  class="select-input input"
 >
   <label
-    class="text-input__label"
+    class="select-input__label control__label"
+  >
+    Default
+  </label>
+   
+  <select
+    class="select-input__control control"
+    label="Default"
+    options="[object Object],[object Object],[object Object]"
+  >
+    <option
+      value="1"
+    >
+      
+      One
+    
+    </option>
+    <option
+      value="2"
+    >
+      
+      Two
+    
+    </option>
+    <option
+      value="3"
+    >
+      
+      Three
+    
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Storyshots SelectInput disabled 1`] = `
+<div
+  class="select-input input"
+>
+  <label
+    class="select-input__label control__label"
+  >
+    Disabled
+  </label>
+   
+  <select
+    class="select-input__control control"
+    disabled="disabled"
+    label="Disabled"
+    options="[object Object],[object Object],[object Object]"
+  >
+    <option
+      value="1"
+    >
+      
+      One
+    
+    </option>
+    <option
+      value="2"
+    >
+      
+      Two
+    
+    </option>
+    <option
+      value="3"
+    >
+      
+      Three
+    
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Storyshots SelectInput with blur handler 1`] = `
+<div
+  class="select-input input"
+>
+  <label
+    class="select-input__label control__label"
+  >
+    With Blur Handler
+  </label>
+   
+  <select
+    class="select-input__control control"
+    label="With Blur Handler"
+    options="[object Object],[object Object],[object Object]"
+  >
+    <option
+      value="1"
+    >
+      
+      One
+    
+    </option>
+    <option
+      value="2"
+    >
+      
+      Two
+    
+    </option>
+    <option
+      value="3"
+    >
+      
+      Three
+    
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Storyshots SelectInput with change handler 1`] = `
+<div
+  class="select-input input"
+>
+  <label
+    class="select-input__label control__label"
+  >
+    With Change Handler
+  </label>
+   
+  <select
+    class="select-input__control control"
+    label="With Change Handler"
+    options="[object Object],[object Object],[object Object]"
+  >
+    <option
+      value="1"
+    >
+      
+      One
+    
+    </option>
+    <option
+      value="2"
+    >
+      
+      Two
+    
+    </option>
+    <option
+      value="3"
+    >
+      
+      Three
+    
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Storyshots SelectInput with focus handler 1`] = `
+<div
+  class="select-input input"
+>
+  <label
+    class="select-input__label control__label"
+  >
+    With Focus Handler
+  </label>
+   
+  <select
+    class="select-input__control control"
+    label="With Focus Handler"
+    options="[object Object],[object Object],[object Object]"
+  >
+    <option
+      value="1"
+    >
+      
+      One
+    
+    </option>
+    <option
+      value="2"
+    >
+      
+      Two
+    
+    </option>
+    <option
+      value="3"
+    >
+      
+      Three
+    
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Storyshots SelectInput with input handler 1`] = `
+<div
+  class="select-input input"
+>
+  <label
+    class="select-input__label control__label"
+  >
+    With Input Handler
+  </label>
+   
+  <select
+    class="select-input__control control"
+    label="With Input Handler"
+    options="[object Object],[object Object],[object Object]"
+  >
+    <option
+      value="1"
+    >
+      
+      One
+    
+    </option>
+    <option
+      value="2"
+    >
+      
+      Two
+    
+    </option>
+    <option
+      value="3"
+    >
+      
+      Three
+    
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Storyshots TextInput default 1`] = `
+<div
+  class="text-input input"
+>
+  <label
+    class="text-input__label control__label"
   >
     Default
   </label>
    
   <input
-    class="text-input__control"
+    class="text-input__control control"
     label="Default"
   />
 </div>
@@ -19,16 +260,16 @@ exports[`Storyshots TextInput default 1`] = `
 
 exports[`Storyshots TextInput disabled 1`] = `
 <div
-  class="text-input"
+  class="text-input input"
 >
   <label
-    class="text-input__label"
+    class="text-input__label control__label"
   >
     Disabled
   </label>
    
   <input
-    class="text-input__control"
+    class="text-input__control control"
     disabled="disabled"
     label="Disabled"
   />
@@ -37,16 +278,16 @@ exports[`Storyshots TextInput disabled 1`] = `
 
 exports[`Storyshots TextInput readonly 1`] = `
 <div
-  class="text-input"
+  class="text-input input"
 >
   <label
-    class="text-input__label"
+    class="text-input__label control__label"
   >
     Readonly
   </label>
    
   <input
-    class="text-input__control"
+    class="text-input__control control"
     label="Readonly"
     readonly="readonly"
   />
@@ -55,16 +296,16 @@ exports[`Storyshots TextInput readonly 1`] = `
 
 exports[`Storyshots TextInput with blur handler 1`] = `
 <div
-  class="text-input"
+  class="text-input input"
 >
   <label
-    class="text-input__label"
+    class="text-input__label control__label"
   >
     With Blur Handler
   </label>
    
   <input
-    class="text-input__control"
+    class="text-input__control control"
     label="With Blur Handler"
   />
 </div>
@@ -72,33 +313,50 @@ exports[`Storyshots TextInput with blur handler 1`] = `
 
 exports[`Storyshots TextInput with change handler 1`] = `
 <div
-  class="text-input"
+  class="text-input input"
 >
   <label
-    class="text-input__label"
+    class="text-input__label control__label"
   >
     With Change Handler
   </label>
    
   <input
-    class="text-input__control"
+    class="text-input__control control"
     label="With Change Handler"
+  />
+</div>
+`;
+
+exports[`Storyshots TextInput with focus handler 1`] = `
+<div
+  class="text-input input"
+>
+  <label
+    class="text-input__label control__label"
+  >
+    With Focus Handler
+  </label>
+   
+  <input
+    class="text-input__control control"
+    label="With Focus Handler"
   />
 </div>
 `;
 
 exports[`Storyshots TextInput with input handler 1`] = `
 <div
-  class="text-input"
+  class="text-input input"
 >
   <label
-    class="text-input__label"
+    class="text-input__label control__label"
   >
     With Input Handler
   </label>
    
   <input
-    class="text-input__control"
+    class="text-input__control control"
     label="With Input Handler"
   />
 </div>

@@ -1,8 +1,8 @@
 <template functional>
   <div class="select-input input">
-    <label class="select-input__label control__label">{{ props.label }}</label>
+    <label class="select-input__label input__label">{{ props.label }}</label>
     <select
-      class="select-input__control control"
+      class="select-input__control input__control"
       v-bind="data.attrs"
       v-on="listeners"
     >
