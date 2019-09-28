@@ -37,9 +37,16 @@ export default {
     eventHandler(event, type) {
       const { value } = event.target;
 
-      if (value === this.value) return;
+      if ((type === "input" || type === "change") && value === this.value)
+        return;
 
-      this.$emit("update:value", value);
+      if (type === "input" && !this.options.lazy) {
+        this.$emit("update:value", value);
+      } else if (type === "change" && this.options.lazy) {
+        this.$emit("update:value", value);
+      }
+
+      this.$emit(type, event);
     }
   }
 };
