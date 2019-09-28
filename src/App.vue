@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <FormObject
+      :title="schema.title"
+      :properties="schema.properties"
+      :value.sync="value"
+      is-root
+    />
+    <br />
+    {{ JSON.stringify(value) }}
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import FormObject from "./components/properties/FormObject";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    FormObject
+  },
+  data() {
+    return {
+      schema: {
+        type: "object",
+        properties: {
+          firstName: {
+            type: "string",
+            title: "First Name"
+          }
+        }
+      },
+      value: {}
+    };
   }
 };
 </script>
