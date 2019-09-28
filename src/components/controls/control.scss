@@ -1,0 +1,9 @@
+.control {
+  border: .2rem solid $primary;
+  padding: .5rem;
+  font-size: 1.6rem;
+  border-radius: .2rem;
+  &:focus {
+    border-color: $primary-highlight;
+  }
+}

@@ -8,7 +8,8 @@ import TextInput from "../../../src/components/controls/TextInput/TextInput.vue"
 export const methods = {
   onInput: action("onInput"),
   onChange: action("onChange"),
-  onBlur: action("onBlur")
+  onBlur: action("onBlur"),
+  onFocus: action("onFocus")
 };
 
 export const attributes = {
@@ -42,6 +43,13 @@ storiesOf("TextInput", module)
     return {
       components: { TextInput },
       template: `<text-input @blur="onBlur" label="With Blur Handler"/>`,
+      methods
+    };
+  })
+  .add("with focus handler", () => {
+    return {
+      components: { TextInput },
+      template: `<text-input @focus="onFocus" label="With Focus Handler"/>`,
       methods
     };
   })
