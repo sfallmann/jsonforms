@@ -17,5 +17,5 @@
   </div>
 </template>
 <style lang="scss">
-@import "./SelectInput.scss";
+@import "./SelectInput";
 </style>

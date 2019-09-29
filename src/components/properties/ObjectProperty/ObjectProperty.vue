@@ -12,9 +12,9 @@
   </component>
 </template>
 <script>
-import FormLayout from "../../layout/form/FormLayout/FormLayout";
-import SubFormLayout from "../../layout/form/SubFormLayout/SubFormLayout";
-import StringProperty from "../StringProperty/StringProperty";
+import FormLayout from "@/components/layout/form/FormLayout/FormLayout";
+import SubFormLayout from "@/components/layout/form/SubFormLayout/SubFormLayout";
+import StringProperty from "@/components/properties/StringProperty/StringProperty";
 
 export default {
   name: "p-object",

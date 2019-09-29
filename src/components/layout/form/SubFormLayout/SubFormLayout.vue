@@ -14,5 +14,5 @@
   </section>
 </template>
 <style lang="scss">
-@import "./SubFormLayout.scss";
+@import "./SubFormLayout";
 </style>

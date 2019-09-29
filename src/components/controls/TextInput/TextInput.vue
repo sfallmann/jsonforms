@@ -9,5 +9,5 @@
   </div>
 </template>
 <style lang="scss">
-@import "./TextInput.scss";
+@import "./TextInput";
 </style>

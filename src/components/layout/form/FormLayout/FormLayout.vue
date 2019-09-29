@@ -14,5 +14,5 @@
   </form>
 </template>
 <style lang="scss">
-@import "./FormLayout.scss";
+@import "./FormLayout";
 </style>
