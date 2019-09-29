@@ -69,16 +69,19 @@ export default {
     getProperty(name) {
       return this.properties[name];
     },
-    getOptions() {
+    getOptions(name) {
       return this.options[name];
     },
     mapNamesToValues() {
       // TODO : Expand conditions beyond string and object types
       for (let name of this.propertyNames) {
+        const property = this.getProperty(name);
+        const type = property.type.toLowerCase();
+
         this.$set(
           this.formData,
           name,
-          this.getProperty(name).type.toLowerCase() === "string" ? "" : {}
+          type === "string" || property.enum ? "" : {}
         );
       }
     },

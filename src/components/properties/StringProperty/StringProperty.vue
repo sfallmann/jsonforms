@@ -1,15 +1,18 @@
 <template>
-  <text-input
+  <component
+    v-bind:is="component"
     @input="eventHandler($event, 'input')"
     @change="eventHandler($event, 'change')"
     @blur="eventHandler($event, 'blur')"
     @focus="eventHandler($event, 'focus')"
     :label="title"
     v-bind="options"
+    :options="mappedEnum()"
   />
 </template>
 <script>
 import TextInput from "../../controls/TextInput/TextInput";
+import SelectInput from "../../controls/SelectInput/SelectInput";
 
 export default {
   name: "p-string",
@@ -22,13 +25,18 @@ export default {
       type: String,
       default: ""
     },
+    enum: {
+      type: Array,
+      default: _ => null
+    },
     options: {
       type: Object,
       default: _ => ({})
     }
   },
   components: {
-    "text-input": TextInput
+    "text-input": TextInput,
+    "select-input": SelectInput
   },
   data() {
     return { event: "input, change" };
@@ -47,6 +55,21 @@ export default {
       } else {
         this.$emit(type, event);
       }
+    },
+    mappedEnum() {
+      if (!this.enum) return;
+
+      return this.enum.map((value, index) => {
+        return {
+          value,
+          text: this.options.enumText ? this.options.enumText[index] : value
+        };
+      });
+    }
+  },
+  computed: {
+    component() {
+      return this.enum ? "select-input" : "text-input";
     }
   }
 };

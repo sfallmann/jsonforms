@@ -11,9 +11,8 @@
         :key="index"
         :value="option.value"
         :selected="props.value === option.value"
-      >
-        {{ option.text }}
-      </option>
+        v-html="option.text"
+      />
     </select>
   </div>
 </template>

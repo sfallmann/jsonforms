@@ -3,6 +3,7 @@
     <p-object
       :title="schema.title"
       :properties="schema.properties"
+      :options="options"
       :value.sync="value"
       is-root
     />
@@ -27,7 +28,17 @@ export default {
           firstName: {
             type: "string",
             title: "First Name"
+          },
+          favoriteColor: {
+            type: "string",
+            title: "Favorite Color",
+            enum: ["red", "blue", "green"]
           }
+        }
+      },
+      options: {
+        favoriteColor: {
+          enumText: ["RED &#128540;", "BLUE", "GREEN"]
         }
       },
       value: {}
