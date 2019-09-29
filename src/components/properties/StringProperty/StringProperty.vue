@@ -52,9 +52,9 @@ export default {
       if ((type === "input" || type === "change") && value === this.value)
         return;
 
-      if (type === "input" && !this.options.lazy) {
+      if (type === "input" && !this.options.lazy && !this.enum) {
         this.$emit("update:value", value);
-      } else if (type === "change" && this.options.lazy) {
+      } else if (type === "change" && (this.options.lazy || this.enum)) {
         this.$emit("update:value", value);
       } else {
         this.$emit(type, event);

@@ -1,5 +1,7 @@
 .input__label {
-  padding-right: 1rem;
   font-weight: 700;
-  color: darken($primary, 20%);
+  color: $primary;
+  display: block;
+  width: 100%;
+  height: $input__label-height;
 }
