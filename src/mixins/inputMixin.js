@@ -22,7 +22,11 @@ export default {
     options: {
       type: Object,
       default: _ => ({})
-    }
+    },
+    isValid: {
+      type: Boolean,
+      default: false,
+    },
   },
   components: {
     "text-input": TextInput,
@@ -61,5 +65,5 @@ export default {
     label() {
       return this.title || this.name;
     }
-  }
+  },
 };

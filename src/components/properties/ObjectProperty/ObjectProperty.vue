@@ -1,6 +1,6 @@
 <template>
   <component v-bind:is="layout" :title="title">
-    <component
+    <component      
       v-for="(name, index) in propertyNames"
       v-bind:is="`p-${getProperty(name).type.toLowerCase()}`"
       :key="getProperty(name).type + '-' + index"
@@ -8,10 +8,15 @@
       v-bind="getProperty(name)"
       :options="getOptions(name)"
       :name="name"
+      :is-valid.sync="validData[name]"
     />
+    <template v-if="isRoot" v-slot:footer>
+      <button @click.prevent="submitForm">Submit</button>
+    </template>
   </component>
 </template>
 <script>
+import cloneDeep from  'lodash/cloneDeep'; 
 import FormLayout from "@/components/layout/form/FormLayout/FormLayout";
 import SubFormLayout from "@/components/layout/form/SubFormLayout/SubFormLayout";
 import StringProperty from "@/components/properties/StringProperty/StringProperty";
@@ -23,6 +28,10 @@ export default {
       type: Boolean,
       default: false
     },
+    isFormValid: {
+      type: Boolean,
+      default: false
+    },    
     properties: {
       type: Object,
       default: _ => ({})
@@ -42,7 +51,11 @@ export default {
     value: {
       type: Object,
       default: _ => ({})
-    }
+    },
+    isValid: {
+      type: Object,
+      default: _ => ({})
+    },
   },
   components: {
     "form-layout": FormLayout,
@@ -51,12 +64,13 @@ export default {
   },
   data() {
     return {
-      formData: {}
+      formData: cloneDeep(this.value) || {},
+      validData: {},
     };
   },
   mounted() {
     this.mapNamesToValues();
-    this.mergeValues();
+   
   },
   computed: {
     layout() {
@@ -64,7 +78,7 @@ export default {
     },
     propertyNames() {
       return Object.keys(this.properties);
-    }
+    },
   },
   methods: {
     getProperty(name) {
@@ -77,14 +91,39 @@ export default {
       // TODO : Expand conditions beyond string and object types
       for (let name of this.propertyNames) {
         const property = this.getProperty(name);
-        const type = property.type.toLowerCase();
+        const type = property.type.toLowerCase();      
 
-        this.$set(this.formData, name, type === "object" ? {} : "");
+        switch (type) {
+          case 'object':
+            this.$set(this.formData, name, this.value[name] || {});
+            this.$set(this.validData, name, this.validData[name] || {});
+            break;
+          case 'array':
+            this.$set(this.formData, name, this.value[name] || []);
+            this.$set(this.validData, name, []);
+            break;
+          default:
+            this.$set(this.formData, name, this.value[name] || "");
+            this.$set(this.validData, name, true);
+        }
       }
     },
-    mergeValues() {
-      return Object.assign(this.formData, this.value);
-    }
+    checkPropertyValidity() {      
+      return this.$children.reduce((isValid, child) => {
+
+        const { type } = child.$attrs;
+
+        if (type === 'object' || type === 'array') {
+          return child.checkPropertyValidity() && isValid;
+        } else {
+          return child.isValid && isValid;
+        }
+      }, true);
+    },
+    submitForm() {
+      console.log('submitting form');
+      console.log('is form valid: ', this.checkPropertyValidity());
+    },
   },
   watch: {
     formData: {
@@ -92,7 +131,7 @@ export default {
       handler(newValue) {
         this.$emit("update:value", newValue);
       }
-    }
+    },  
   }
 };
 </script>

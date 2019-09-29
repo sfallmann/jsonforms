@@ -4,11 +4,14 @@
       :title="schema.title"
       :properties="schema.properties"
       :options="options"
-      :value.sync="value"
+      :value.sync="value"      
       is-root
     />
     <br />
     {{ JSON.stringify(value) }}
+    <br />
+
+
   </div>
 </template>
 
@@ -22,6 +25,7 @@ export default {
   },
   data() {
     return {
+      isFormValid: false,
       schema: {
         type: "object",
         title: "Contact Form",
@@ -56,7 +60,12 @@ export default {
           enumText: ["RED &#128540;", "BLUE", "GREEN"]
         }
       },
-      value: {}
+      value: {
+        firstName: 'Test Value',
+        address: {
+          street: 'Vermont Street'
+        }
+      }
     };
   }
 };

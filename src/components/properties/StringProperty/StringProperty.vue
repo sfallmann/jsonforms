@@ -7,6 +7,7 @@
     @focus="eventHandler($event, 'focus')"
     :label="label"
     v-bind="options"
+    :value="value"
     :options="mappedEnum()"
   />
 </template>
