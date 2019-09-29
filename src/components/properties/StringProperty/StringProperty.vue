@@ -5,7 +5,7 @@
     @change="eventHandler($event, 'change')"
     @blur="eventHandler($event, 'blur')"
     @focus="eventHandler($event, 'focus')"
-    :label="title"
+    :label="label"
     v-bind="options"
     :options="mappedEnum()"
   />
@@ -22,6 +22,10 @@ export default {
       default: ""
     },
     title: {
+      type: String,
+      default: ""
+    },
+    name: {
       type: String,
       default: ""
     },
@@ -70,6 +74,9 @@ export default {
   computed: {
     component() {
       return this.enum ? "select-input" : "text-input";
+    },
+    label() {
+      return this.title || this.name;
     }
   }
 };

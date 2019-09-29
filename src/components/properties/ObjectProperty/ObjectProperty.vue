@@ -7,6 +7,7 @@
       :value.sync="formData[name]"
       v-bind="getProperty(name)"
       :options="getOptions(name)"
+      :name="name"
     />
   </component>
 </template>
@@ -78,11 +79,7 @@ export default {
         const property = this.getProperty(name);
         const type = property.type.toLowerCase();
 
-        this.$set(
-          this.formData,
-          name,
-          type === "string" || property.enum ? "" : {}
-        );
+        this.$set(this.formData, name, type === "object" ? {} : "");
       }
     },
     mergeValues() {

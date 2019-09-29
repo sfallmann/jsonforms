@@ -24,6 +24,7 @@ export default {
     return {
       schema: {
         type: "object",
+        title: "Contact Form",
         properties: {
           firstName: {
             type: "string",
@@ -33,6 +34,20 @@ export default {
             type: "string",
             title: "Favorite Color",
             enum: ["red", "blue", "green"]
+          },
+          address: {
+            title: "Address",
+            type: "object",
+            properties: {
+              street: {
+                type: "string",
+                title: "Street"
+              },
+              city: {
+                type: "string",
+                title: "City"
+              }
+            }
           }
         }
       },
