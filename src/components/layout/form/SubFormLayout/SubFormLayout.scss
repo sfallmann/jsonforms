@@ -1,0 +1,11 @@
+@import '../form.scss';
+@import '../form__title.scss';
+
+.sub-form {
+  box-shadow: none;
+}
+
+.sub-form__title {
+  font-size: $font-size-lg;
+}
+

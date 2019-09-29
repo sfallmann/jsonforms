@@ -4,6 +4,11 @@ $primary-highlight: #68829E;
 $secondary: #598234;
 $secondary-highlight: #AEBD38;
 
+// font sizes
+$font-size-sm: 1.2rem;
+$font-size: 1.6rem;
+$font-size-lg: 2rem;
+$font-size-xl: 2.4rem;
 
 // width & height
 $input-height: 7rem;
@@ -13,7 +18,8 @@ $input-min-width: 22rem;
 
 // padding
 $padding-sm: .5rem;
-// font sizes
+$padding: 1rem;
 
 // border
-$border-default: .2rem solid $primary;
+$border: .2rem solid $primary;
+$border-sm: .1rem solid $primary;

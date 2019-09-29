@@ -1,8 +1,6 @@
 import { storiesOf } from "@storybook/vue";
 import { action } from "@storybook/addon-actions";
 
-import "./../../../src/scss/_variables.scss";
-import "./../../../src/scss/_base.scss";
 import SelectInput from "../../../src/components/controls/SelectInput/SelectInput.vue";
 
 export const methods = {

@@ -1,4 +1,5 @@
 const path = require('path');
+const rootPath = path.resolve(__dirname, '../src')
 
 // Export a function. Accept the base config as the only param.
 module.exports = async ({ config, mode }) => {
@@ -9,10 +10,18 @@ module.exports = async ({ config, mode }) => {
   // Make whatever fine-grained changes you need
   config.module.rules.push({
     test: /\.scss$/,
-    use: ['style-loader', 'css-loader', 'sass-loader'],
+    use: ['style-loader', 'css-loader',
+      {
+        loader: 'sass-loader',
+        options: {
+          data: `@import "@/scss/global.scss";`
+        }
+      }
+    ],
     include: path.resolve(__dirname, '../'),
   });
-
+	config.resolve.alias['@'] = rootPath;
+	config.resolve.alias['~'] = rootPath;
   // Return the altered config
   return config;
 };

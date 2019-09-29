@@ -1,5 +1,5 @@
 <template functional>
-  <form class="form form__type__root">
+  <form class="form">
     <header class="form__header">
       <slot name="header">
         <div class="form__title">{{ props.title }}</div>
@@ -13,3 +13,6 @@
     </footer>
   </form>
 </template>
+<style lang="scss">
+@import "./FormLayout.scss";
+</style>

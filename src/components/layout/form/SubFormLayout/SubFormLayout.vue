@@ -1,8 +1,8 @@
 <template functional>
-  <section class="form form__type__sub">
+  <section class="form sub-form">
     <header class="form__header">
       <slot name="header">
-        <div class="form__title">{{ props.title }}</div>
+        <div class="form__title sub-form__title">{{ props.title }}</div>
       </slot>
     </header>
     <main class="form__body">
@@ -13,3 +13,6 @@
     </footer>
   </section>
 </template>
+<style lang="scss">
+@import "./SubFormLayout.scss";
+</style>
