@@ -19,6 +19,12 @@ export const data = {
     { value: 1, text: "One" },
     { value: 2, text: "Two" },
     { value: 3, text: "Three" }
+  ],
+  emojiOptions: [
+    { value: "zebra", text: "Zebra &#129427;" },
+    { value: "t_rex", text: "T.Rex &#129430" },
+    { value: "gorilla", text: "Gorilla &#129421" },
+    { value: "fox", text: "Fox &#129418" }
   ]
 };
 
@@ -27,6 +33,13 @@ storiesOf("SelectInput", module)
     return {
       components: { SelectInput },
       template: `<select-input label="Default" :options="options" :value="value" />`,
+      data: () => data
+    };
+  })
+  .add("with emoji options", () => {
+    return {
+      components: { SelectInput },
+      template: `<select-input label="Default" :options="emojiOptions" value="gorilla" />`,
       data: () => data
     };
   })

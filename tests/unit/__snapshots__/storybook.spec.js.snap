@@ -5,36 +5,30 @@ exports[`Storyshots SelectInput default 1`] = `
   class="select-input input"
 >
   <label
-    class="select-input__label control__label"
+    class="select-input__label input__label"
   >
     Default
   </label>
    
   <select
-    class="select-input__control control"
+    class="select-input__control input__control"
     label="Default"
     options="[object Object],[object Object],[object Object]"
   >
     <option
       value="1"
     >
-      
       One
-    
     </option>
     <option
       value="2"
     >
-      
       Two
-    
     </option>
     <option
       value="3"
     >
-      
       Three
-    
     </option>
   </select>
 </div>
@@ -45,13 +39,13 @@ exports[`Storyshots SelectInput disabled 1`] = `
   class="select-input input"
 >
   <label
-    class="select-input__label control__label"
+    class="select-input__label input__label"
   >
     Disabled
   </label>
    
   <select
-    class="select-input__control control"
+    class="select-input__control input__control"
     disabled="disabled"
     label="Disabled"
     options="[object Object],[object Object],[object Object]"
@@ -59,23 +53,17 @@ exports[`Storyshots SelectInput disabled 1`] = `
     <option
       value="1"
     >
-      
       One
-    
     </option>
     <option
       value="2"
     >
-      
       Two
-    
     </option>
     <option
       value="3"
     >
-      
       Three
-    
     </option>
   </select>
 </div>
@@ -86,36 +74,30 @@ exports[`Storyshots SelectInput with blur handler 1`] = `
   class="select-input input"
 >
   <label
-    class="select-input__label control__label"
+    class="select-input__label input__label"
   >
     With Blur Handler
   </label>
    
   <select
-    class="select-input__control control"
+    class="select-input__control input__control"
     label="With Blur Handler"
     options="[object Object],[object Object],[object Object]"
   >
     <option
       value="1"
     >
-      
       One
-    
     </option>
     <option
       value="2"
     >
-      
       Two
-    
     </option>
     <option
       value="3"
     >
-      
       Three
-    
     </option>
   </select>
 </div>
@@ -126,36 +108,69 @@ exports[`Storyshots SelectInput with change handler 1`] = `
   class="select-input input"
 >
   <label
-    class="select-input__label control__label"
+    class="select-input__label input__label"
   >
     With Change Handler
   </label>
    
   <select
-    class="select-input__control control"
+    class="select-input__control input__control"
     label="With Change Handler"
     options="[object Object],[object Object],[object Object]"
   >
     <option
       value="1"
     >
-      
       One
-    
     </option>
     <option
       value="2"
     >
-      
       Two
-    
     </option>
     <option
       value="3"
     >
-      
       Three
-    
+    </option>
+  </select>
+</div>
+`;
+
+exports[`Storyshots SelectInput with emoji options 1`] = `
+<div
+  class="select-input input"
+>
+  <label
+    class="select-input__label input__label"
+  >
+    Default
+  </label>
+   
+  <select
+    class="select-input__control input__control"
+    label="Default"
+    options="[object Object],[object Object],[object Object],[object Object]"
+  >
+    <option
+      value="zebra"
+    >
+      Zebra 🦓
+    </option>
+    <option
+      value="t_rex"
+    >
+      T.Rex 🦖
+    </option>
+    <option
+      value="gorilla"
+    >
+      Gorilla 🦍
+    </option>
+    <option
+      value="fox"
+    >
+      Fox 🦊
     </option>
   </select>
 </div>
@@ -166,36 +181,30 @@ exports[`Storyshots SelectInput with focus handler 1`] = `
   class="select-input input"
 >
   <label
-    class="select-input__label control__label"
+    class="select-input__label input__label"
   >
     With Focus Handler
   </label>
    
   <select
-    class="select-input__control control"
+    class="select-input__control input__control"
     label="With Focus Handler"
     options="[object Object],[object Object],[object Object]"
   >
     <option
       value="1"
     >
-      
       One
-    
     </option>
     <option
       value="2"
     >
-      
       Two
-    
     </option>
     <option
       value="3"
     >
-      
       Three
-    
     </option>
   </select>
 </div>
@@ -206,36 +215,30 @@ exports[`Storyshots SelectInput with input handler 1`] = `
   class="select-input input"
 >
   <label
-    class="select-input__label control__label"
+    class="select-input__label input__label"
   >
     With Input Handler
   </label>
    
   <select
-    class="select-input__control control"
+    class="select-input__control input__control"
     label="With Input Handler"
     options="[object Object],[object Object],[object Object]"
   >
     <option
       value="1"
     >
-      
       One
-    
     </option>
     <option
       value="2"
     >
-      
       Two
-    
     </option>
     <option
       value="3"
     >
-      
       Three
-    
     </option>
   </select>
 </div>
@@ -246,13 +249,13 @@ exports[`Storyshots TextInput default 1`] = `
   class="text-input input"
 >
   <label
-    class="text-input__label control__label"
+    class="text-input__label input__label"
   >
     Default
   </label>
    
   <input
-    class="text-input__control control"
+    class="text-input__control input__control"
     label="Default"
   />
 </div>
@@ -263,13 +266,13 @@ exports[`Storyshots TextInput disabled 1`] = `
   class="text-input input"
 >
   <label
-    class="text-input__label control__label"
+    class="text-input__label input__label"
   >
     Disabled
   </label>
    
   <input
-    class="text-input__control control"
+    class="text-input__control input__control"
     disabled="disabled"
     label="Disabled"
   />
@@ -281,13 +284,13 @@ exports[`Storyshots TextInput readonly 1`] = `
   class="text-input input"
 >
   <label
-    class="text-input__label control__label"
+    class="text-input__label input__label"
   >
     Readonly
   </label>
    
   <input
-    class="text-input__control control"
+    class="text-input__control input__control"
     label="Readonly"
     readonly="readonly"
   />
@@ -299,13 +302,13 @@ exports[`Storyshots TextInput with blur handler 1`] = `
   class="text-input input"
 >
   <label
-    class="text-input__label control__label"
+    class="text-input__label input__label"
   >
     With Blur Handler
   </label>
    
   <input
-    class="text-input__control control"
+    class="text-input__control input__control"
     label="With Blur Handler"
   />
 </div>
@@ -316,13 +319,13 @@ exports[`Storyshots TextInput with change handler 1`] = `
   class="text-input input"
 >
   <label
-    class="text-input__label control__label"
+    class="text-input__label input__label"
   >
     With Change Handler
   </label>
    
   <input
-    class="text-input__control control"
+    class="text-input__control input__control"
     label="With Change Handler"
   />
 </div>
@@ -333,13 +336,13 @@ exports[`Storyshots TextInput with focus handler 1`] = `
   class="text-input input"
 >
   <label
-    class="text-input__label control__label"
+    class="text-input__label input__label"
   >
     With Focus Handler
   </label>
    
   <input
-    class="text-input__control control"
+    class="text-input__control input__control"
     label="With Focus Handler"
   />
 </div>
@@ -350,13 +353,13 @@ exports[`Storyshots TextInput with input handler 1`] = `
   class="text-input input"
 >
   <label
-    class="text-input__label control__label"
+    class="text-input__label input__label"
   >
     With Input Handler
   </label>
    
   <input
-    class="text-input__control control"
+    class="text-input__control input__control"
     label="With Input Handler"
   />
 </div>

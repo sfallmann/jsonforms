@@ -12,7 +12,7 @@ export const methods = {
   onFocus: action("onFocus")
 };
 
-export const attributes = {
+export const data = {
   disabled: true,
   readonly: true,
   value: "test value"
@@ -57,13 +57,13 @@ storiesOf("TextInput", module)
     return {
       components: { TextInput },
       template: `<text-input :readonly="readonly" :value="value" label="Readonly"/>`,
-      data: () => attributes
+      data: () => data
     };
   })
   .add("disabled", () => {
     return {
       components: { TextInput },
       template: `<text-input :disabled="disabled" :value="value" label="Disabled"/>`,
-      data: () => attributes
+      data: () => data
     };
   });
