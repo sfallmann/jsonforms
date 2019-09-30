@@ -1,7 +1,9 @@
 import TextInput from "@/components/controls/TextInput/TextInput";
 import SelectInput from "@/components/controls/SelectInput/SelectInput";
+import validationMixin from './validationMixin';
 
 export default {
+  mixins: [validationMixin],
   props: {
     value: {
       type: String,
@@ -23,10 +25,6 @@ export default {
       type: Object,
       default: _ => ({})
     },
-    isValid: {
-      type: Boolean,
-      default: false,
-    },
   },
   components: {
     "text-input": TextInput,
@@ -41,8 +39,10 @@ export default {
 
       if (type === "input" && !this.options.lazy && !this.enum) {
         this.$emit("update:value", value);
+        this.updateValidity();
       } else if (type === "change" && (this.options.lazy || this.enum)) {
         this.$emit("update:value", value);
+        this.updateValidity();
       } else {
         this.$emit(type, event);
       }
@@ -56,7 +56,7 @@ export default {
           text: this.options.enumText ? this.options.enumText[index] : value
         };
       });
-    }
+    },
   },
   computed: {
     component() {
@@ -64,6 +64,9 @@ export default {
     },
     label() {
       return this.title || this.name;
-    }
+    },
+  },
+  mounted() {
+    this.updateValidity();
   },
 };

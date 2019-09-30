@@ -9,6 +9,7 @@
     v-bind="options"
     :value="value"
     :options="mappedEnum()"
+    :validationError="isValid ? '' : 'Required'"
   />
 </template>
 <script>

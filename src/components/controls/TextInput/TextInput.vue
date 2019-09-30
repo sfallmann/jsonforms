@@ -6,6 +6,7 @@
       v-bind="data.attrs"
       v-on="listeners"
     />
+    <div v-if="props.validationError">{{ props.validationError }}</div>
   </div>
 </template>
 <style lang="scss">

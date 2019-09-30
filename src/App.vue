@@ -4,14 +4,13 @@
       :title="schema.title"
       :properties="schema.properties"
       :options="options"
-      :value.sync="value"      
+      :value.sync="value"
       is-root
+      :required="schema.required"
     />
     <br />
     {{ JSON.stringify(value) }}
     <br />
-
-
   </div>
 </template>
 
@@ -29,6 +28,7 @@ export default {
       schema: {
         type: "object",
         title: "Contact Form",
+        required: ['firstName', 'favoriteColor'],
         properties: {
           firstName: {
             type: "string",
@@ -49,7 +49,8 @@ export default {
               },
               city: {
                 type: "string",
-                title: "City"
+                title: "City",
+                required: true,
               }
             }
           }
@@ -61,9 +62,9 @@ export default {
         }
       },
       value: {
-        firstName: 'Test Value',
+        firstName: "Test Value",
         address: {
-          street: 'Vermont Street'
+          street: "Vermont Street"
         }
       }
     };
