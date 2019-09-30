@@ -25,6 +25,35 @@ export default {
         : true;
       return validFlag;
     },
+    isMinLengthSatisified() {
+      const minLength = Number.parseInt(this.minLength);
+      const length = Number.parseInt(this.value.length);
+
+      return isNaN(minLength)
+        ? true
+        : minLength && isNaN(length)
+        ? false
+        : length < minLength
+        ? false
+        : true;
+    },
+    isMaxLengthSatisfied() {
+      const maxLength = Number.parseInt(this.maxLength);
+      const length = Number.parseInt(this.value.length);
+
+      return isNaN(maxLength)
+        ? true
+        : maxLength && isNaN(length)
+        ? true
+        : length > maxLength
+        ? false
+        : true;
+    },
+    isPatternSatisfied() {
+      if (!this.pattern) return true;
+      const regex = new RegExp(this.pattern);
+      return regex.test(this.value);
+    },
     currentValidity() {
       let validFlag = this.isRequiredSatisfied;
 
@@ -33,10 +62,25 @@ export default {
     },
     validationErrors() {
       const errors = [];
+
+      // TODO: Add more errors!
+
       if (!this.isRequiredSatisfied) {
         errors.push("This is a required field");
       }
-      // TODO: Add more errors!
+
+      if (!this.isMinLengthSatisfied) {
+        errors.push(`Less than minlength ${this.minlength}`);
+      }
+
+      if (!this.isMaxLengthSatisfied) {
+        errors.push(`Greater than maxlength ${this.maxlength}`);
+      }
+
+      if (!this.isPatternSatisfied) {
+        errors.push(`Pattern ${this.pattern} not matched`);
+      }
+
       return errors;
     }
   }

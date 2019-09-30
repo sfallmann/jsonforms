@@ -127,14 +127,14 @@ export default {
         const { type } = child.$attrs;
 
         if (type === "object" || type === "array") {
-          return child.checkPropertyValidity() && isValid;
+          return child.checkValidity() && isValid;
         } else {
           return child.isValid && isValid;
         }
       }, true);
     },
     submitForm() {
-      this.$emit("submitting", this.checkPropertyValidity());
+      this.$emit("submitting", this.checkValidity());
     }
   },
   watch: {
