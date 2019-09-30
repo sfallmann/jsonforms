@@ -7,10 +7,12 @@
       :value.sync="value"
       is-root
       :required="schema.required"
+      @submitting="handleSubmit"
     />
     <br />
     {{ JSON.stringify(value) }}
     <br />
+    Is the form valid? {{ isFormValid }}
   </div>
 </template>
 
@@ -22,13 +24,18 @@ export default {
   components: {
     "p-object": ObjectProperty
   },
+  methods: {
+    handleSubmit(isValid) {
+      this.isFormValid = isValid;
+    }
+  },
   data() {
     return {
-      isFormValid: false,
+      isFormValid: null,
       schema: {
         type: "object",
         title: "Contact Form",
-        required: ['firstName', 'favoriteColor'],
+        required: ["firstName", "favoriteColor"],
         properties: {
           firstName: {
             type: "string",
@@ -50,7 +57,7 @@ export default {
               city: {
                 type: "string",
                 title: "City",
-                required: true,
+                required: true
               }
             }
           }

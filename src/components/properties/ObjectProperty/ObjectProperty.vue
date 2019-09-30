@@ -94,10 +94,12 @@ export default {
     isRequired(name) {
       const property = this.getProperty(name);
 
-      if (property.type === 'object' && !property.required) return false;
+      if (property.type === "object" && !property.required) return false;
       if (property.required) return property.required;
 
-      return this.required && this.required.find(p => name === p) ? true : false;
+      return this.required && this.required.find(p => name === p)
+        ? true
+        : false;
     },
     mapNamesToValues() {
       // TODO : Expand conditions beyond string and object types
@@ -132,8 +134,7 @@ export default {
       }, true);
     },
     submitForm() {
-      console.log("submitting form");
-      console.log("is form valid: ", this.checkPropertyValidity());
+      this.$emit("submitting", this.checkPropertyValidity());
     }
   },
   watch: {

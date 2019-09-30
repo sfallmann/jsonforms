@@ -9,8 +9,11 @@
     v-bind="options"
     :value="value"
     :options="mappedEnum()"
-    :validationError="isValid ? '' : 'Required'"
-  />
+  >
+    <template v-slot:error v-show="validationErrors.length">
+      <div v-show="validationErrors.length">{{ validationErrors[0] }}</div>
+    </template>
+  </component>
 </template>
 <script>
 import { inputMixin } from "../../../mixins";

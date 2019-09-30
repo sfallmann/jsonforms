@@ -1,6 +1,6 @@
 import TextInput from "@/components/controls/TextInput/TextInput";
 import SelectInput from "@/components/controls/SelectInput/SelectInput";
-import validationMixin from './validationMixin';
+import validationMixin from "./validationMixin";
 
 export default {
   mixins: [validationMixin],
@@ -24,7 +24,7 @@ export default {
     options: {
       type: Object,
       default: _ => ({})
-    },
+    }
   },
   components: {
     "text-input": TextInput,
@@ -56,7 +56,7 @@ export default {
           text: this.options.enumText ? this.options.enumText[index] : value
         };
       });
-    },
+    }
   },
   computed: {
     component() {
@@ -64,9 +64,9 @@ export default {
     },
     label() {
       return this.title || this.name;
-    },
+    }
   },
   mounted() {
     this.updateValidity();
-  },
+  }
 };
