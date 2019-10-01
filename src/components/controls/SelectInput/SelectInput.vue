@@ -1,9 +1,14 @@
 <template functional>
   <div class="select-input input">
-    <label class="select-input__label input__label$">{{ props.label }}</label>
+    <label class="select-input__label input__label">{{ props.label }}</label>
     <select
       class="select-input__control input__control"
-      v-bind="data.attrs"
+      :autcomplete="autcomplete"
+      :autofocus="autofocus"
+      :disabled="disabled"
+      :multiple="multiple"
+      :size="size"
+      :value="props.value"
       v-on="listeners"
     >
       <option

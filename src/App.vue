@@ -46,6 +46,11 @@ export default {
             title: "Favorite Color",
             enum: ["red", "blue", "green"]
           },
+          email: {
+            type: "string",
+            title: "Email",
+            format: "email"
+          },
           address: {
             title: "Address",
             type: "object",

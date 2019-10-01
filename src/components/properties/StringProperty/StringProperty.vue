@@ -11,15 +11,31 @@
     :options="mappedEnum()"
   >
     <template v-slot:error v-show="validationErrors.length">
-      <div v-show="validationErrors.length">{{ validationErrors[0] }}</div>
+      <div class="validation-error" v-show="validationErrors.length">
+        {{ validationErrors[0] }}
+      </div>
     </template>
   </component>
 </template>
 <script>
 import { inputMixin } from "../../../mixins";
+import TextInput from "@/components/controls/TextInput/TextInput";
+import SelectInput from "@/components/controls/SelectInput/SelectInput";
 
 export default {
   name: "p-string",
-  mixins: [inputMixin]
+  mixins: [inputMixin],
+  components: {
+    "text-input": TextInput,
+    "select-input": SelectInput
+  }
 };
 </script>
+<style lang="scss">
+.validation-error {
+  padding: 0.5rem 0.2rem;
+  color: red;
+  font-weight: bold;
+  font-size: $font-size-sm;
+}
+</style>

@@ -1,3 +1,5 @@
+import validator from "validator";
+
 export default {
   props: {
     isValid: {
@@ -7,6 +9,20 @@ export default {
     required: {
       type: Boolean,
       default: false
+    },
+    minLength: {
+      type: Number
+    },
+    maxLength: {
+      type: Number
+    },
+    pattern: {
+      type: String,
+      default: ""
+    },
+    format: {
+      type: String,
+      default: ""
     }
   },
   methods: {
@@ -25,7 +41,7 @@ export default {
         : true;
       return validFlag;
     },
-    isMinLengthSatisified() {
+    isMinLengthSatisfied() {
       const minLength = Number.parseInt(this.minLength);
       const length = Number.parseInt(this.value.length);
 
@@ -50,15 +66,34 @@ export default {
         : true;
     },
     isPatternSatisfied() {
-      if (!this.pattern) return true;
+      if (!this.pattern || (!this.required && !this.value)) return true;
+
       const regex = new RegExp(this.pattern);
       return regex.test(this.value);
     },
-    currentValidity() {
-      let validFlag = this.isRequiredSatisfied;
+    isFormatSatisfied() {
+      if (!this.format || (!this.required && !this.value)) return true;
 
-      // TODO: Add more validation!
-      return validFlag;
+      switch (this.format) {
+        case "date":
+          return validator.isRFC3339(this.value);
+        case "email":
+          return validator.isEmail(this.value);
+        case "hostname":
+          return validator.isFQDN(this.value);
+        case "ipv4":
+          return validator.isIP(this.value, 4);
+        case "ipv6":
+          return validator.isIP(this.value, 6);
+        case "uri":
+          // NOT COMPLETE!!
+          return validator.isURL(this.value);
+        default:
+          return true;
+      }
+    },
+    currentValidity() {
+      return !this.validationErrors.length;
     },
     validationErrors() {
       const errors = [];
@@ -78,7 +113,11 @@ export default {
       }
 
       if (!this.isPatternSatisfied) {
-        errors.push(`Pattern ${this.pattern} not matched`);
+        errors.push(`Pattern "${this.pattern}" not matched`);
+      }
+
+      if (!this.isFormatSatisfied) {
+        errors.push(`Format "${this.format}" not matched`);
       }
 
       return errors;

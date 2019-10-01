@@ -1,5 +1,3 @@
-import TextInput from "@/components/controls/TextInput/TextInput";
-import SelectInput from "@/components/controls/SelectInput/SelectInput";
 import validationMixin from "./validationMixin";
 
 export default {
@@ -25,10 +23,6 @@ export default {
       type: Object,
       default: _ => ({})
     }
-  },
-  components: {
-    "text-input": TextInput,
-    "select-input": SelectInput
   },
   methods: {
     eventHandler(event, type) {

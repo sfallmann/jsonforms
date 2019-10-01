@@ -122,7 +122,7 @@ export default {
         }
       }
     },
-    checkPropertyValidity() {
+    checkValidity() {
       return this.$children.reduce((isValid, child) => {
         const { type } = child.$attrs;
 
