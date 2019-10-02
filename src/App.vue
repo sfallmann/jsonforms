@@ -54,26 +54,14 @@ export default {
           address: {
             title: "Address",
             type: "array",
+            maxItems: 3,
             items: [
               {
                 type: "object",
                 properties: {
                   type: {
                     type: "string",
-                    enum: ["home"]
-                  },
-                  street: {
-                    type: "string",
-                    title: "Street"
-                  }
-                }
-              },
-              {
-                type: "object",
-                properties: {
-                  type: {
-                    type: "string",
-                    enum: ["work"]
+                    enum: ["home", "work"]
                   },
                   street: {
                     type: "string",

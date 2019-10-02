@@ -10,7 +10,9 @@
       :name="name"
       :is-valid.sync="validData[name]"
       :required="isRequired(name)"
+      :uniqueItems="uniqueItems"
     />
+    <a href="#" v-if="showAddButton">Add another</a>
     <template v-if="isRoot" v-slot:footer>
       <button @click.prevent="submitForm">Submit</button>
     </template>
@@ -64,6 +66,18 @@ export default {
     required: {
       type: [Array, Boolean],
       default: _ => []
+    },
+    minItems: {
+      type: Number,
+      default: 0
+    },
+    maxItems: {
+      type: Number,
+      default: Infinity
+    },
+    uniqueItems: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -85,27 +99,54 @@ export default {
       return this.isRoot ? "form-layout" : "sub-form-layout";
     },
     propertyNames() {
-      return this.isArray
-        ? Object.keys(this.items)
-        : Object.keys(this.properties);
+      if (!this.isArray) return Object.keys(this.properties);
+
+      const itemKeys = Object.keys(this.items);
+      if (!this.value) return itemKeys;
+
+      const valueKeys = Object.keys(this.value);
+      return valueKeys.length <= itemKeys.length ? itemKeys : valueKeys;
     },
     isArray() {
       return this.items;
+    },
+    showAddButton() {
+      if (!this.isArray) return false;
+
+      const numOfItems = this.propertyNames.length;
+      if (numOfItems < this.minItems || numOfItems >= this.maxItems)
+        return false;
+
+      return true;
     }
   },
   methods: {
     getComponent(name) {
-      const { type } = this.isArray ? this.items[name] : this.properties[name];
+      const { type } = this.isArray
+        ? this.getArrayItem(name)
+        : this.properties[name];
 
       return type === "object" || type === "array"
         ? "complex-property"
         : "simple-property";
     },
     getProperty(name) {
-      return this.isArray ? this.items[name] : this.properties[name];
+      return this.isArray ? this.getArrayItem(name) : this.properties[name];
+    },
+    getArrayItem(name) {
+      if (this.items[name] === undefined) {
+        const newItem = cloneDeep(this.items[this.propertyNames[0]]);
+        return newItem;
+      }
+      return this.items[name];
     },
     getOptions(name) {
-      return this.options[name];
+      if (!this.isArray || this.items[name]) return this.options[name];
+
+      if (this.items[name] === undefined && this.isArray) {
+        const newOptions = cloneDeep(this.options[this.propertyNames[0]]);
+        return newOptions;
+      }
     },
     isRequired(name) {
       const property = this.getProperty(name);
