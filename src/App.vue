@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <p-object
+    <complex-property
       :title="schema.title"
       :properties="schema.properties"
       :options="options"
@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import ObjectProperty from "./components/properties/ObjectProperty/ObjectProperty";
+import ComplexProperty from "./components/properties/ComplexProperty/ComplexProperty";
 
 export default {
   name: "app",
   components: {
-    "p-object": ObjectProperty
+    "complex-property": ComplexProperty
   },
   methods: {
     handleSubmit(isValid) {
@@ -53,18 +53,35 @@ export default {
           },
           address: {
             title: "Address",
-            type: "object",
-            properties: {
-              street: {
-                type: "string",
-                title: "Street"
+            type: "array",
+            items: [
+              {
+                type: "object",
+                properties: {
+                  type: {
+                    type: "string",
+                    enum: ["home"]
+                  },
+                  street: {
+                    type: "string",
+                    title: "Street"
+                  }
+                }
               },
-              city: {
-                type: "string",
-                title: "City",
-                required: true
+              {
+                type: "object",
+                properties: {
+                  type: {
+                    type: "string",
+                    enum: ["work"]
+                  },
+                  street: {
+                    type: "string",
+                    title: "Street"
+                  }
+                }
               }
-            }
+            ]
           }
         }
       },
@@ -75,9 +92,7 @@ export default {
       },
       value: {
         firstName: "Test Value",
-        address: {
-          street: "Vermont Street"
-        }
+        address: [{ type: "home" }, { type: "work" }]
       }
     };
   }

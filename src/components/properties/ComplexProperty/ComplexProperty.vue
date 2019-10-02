@@ -2,7 +2,7 @@
   <component v-bind:is="layout" :title="title">
     <component
       v-for="(name, index) in propertyNames"
-      v-bind:is="`p-${getProperty(name).type.toLowerCase()}`"
+      v-bind:is="getComponent(name)"
       :key="getProperty(name).type + '-' + index"
       :value.sync="formData[name]"
       v-bind="getProperty(name)"
@@ -20,10 +20,11 @@
 import cloneDeep from "lodash/cloneDeep";
 import FormLayout from "@/components/layout/form/FormLayout/FormLayout";
 import SubFormLayout from "@/components/layout/form/SubFormLayout/SubFormLayout";
-import StringProperty from "@/components/properties/StringProperty/StringProperty";
+import SimpleProperty from "@/components/properties/SimpleProperty/SimpleProperty";
+import { isArray } from "util";
 
 export default {
-  name: "p-object",
+  name: "complex-property",
   props: {
     isRoot: {
       type: Boolean,
@@ -36,6 +37,9 @@ export default {
     properties: {
       type: Object,
       default: _ => ({})
+    },
+    items: {
+      type: [Object, Array]
     },
     title: {
       type: String,
@@ -50,11 +54,11 @@ export default {
       default: _ => ({})
     },
     value: {
-      type: Object,
+      type: [Object, Array],
       default: _ => ({})
     },
     isValid: {
-      type: Object,
+      type: [Object, Array],
       default: _ => ({})
     },
     required: {
@@ -65,7 +69,7 @@ export default {
   components: {
     "form-layout": FormLayout,
     "sub-form-layout": SubFormLayout,
-    "p-string": StringProperty
+    "simple-property": SimpleProperty
   },
   data() {
     return {
@@ -81,12 +85,24 @@ export default {
       return this.isRoot ? "form-layout" : "sub-form-layout";
     },
     propertyNames() {
-      return Object.keys(this.properties);
+      return this.isArray
+        ? Object.keys(this.items)
+        : Object.keys(this.properties);
+    },
+    isArray() {
+      return this.items;
     }
   },
   methods: {
+    getComponent(name) {
+      const { type } = this.isArray ? this.items[name] : this.properties[name];
+
+      return type === "object" || type === "array"
+        ? "complex-property"
+        : "simple-property";
+    },
     getProperty(name) {
-      return this.properties[name];
+      return this.isArray ? this.items[name] : this.properties[name];
     },
     getOptions(name) {
       return this.options[name];
@@ -106,7 +122,6 @@ export default {
       for (let name of this.propertyNames) {
         const property = this.getProperty(name);
         const type = property.type.toLowerCase();
-
         switch (type) {
           case "object":
             this.$set(this.formData, name, this.value[name] || {});

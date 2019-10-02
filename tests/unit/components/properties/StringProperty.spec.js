@@ -1,13 +1,13 @@
 import { mount } from "@vue/test-utils";
-import StringProperty from "@/components/properties/StringProperty/StringProperty";
+import SimpleProperty from "@/components/properties/SimpleProperty/SimpleProperty";
 
-describe("StringProperty", () => {
+describe("SimpleProperty", () => {
   test("is a Vue instance", () => {
-    const wrapper = mount(StringProperty);
+    const wrapper = mount(SimpleProperty);
     expect(wrapper.isVueInstance()).toBeTruthy();
   }),
     test('emit "input" with value', () => {
-      const wrapper = mount(StringProperty, {
+      const wrapper = mount(SimpleProperty, {
         propsData: {
           value: "ab"
         }
@@ -20,7 +20,7 @@ describe("StringProperty", () => {
       expect(value).toBe("abc");
     });
   test('emit "change" with value', () => {
-    const wrapper = mount(StringProperty, {
+    const wrapper = mount(SimpleProperty, {
       propsData: {
         value: "ab",
         options: { lazy: true }

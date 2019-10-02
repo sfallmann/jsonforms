@@ -23,7 +23,7 @@ import TextInput from "@/components/controls/TextInput/TextInput";
 import SelectInput from "@/components/controls/SelectInput/SelectInput";
 
 export default {
-  name: "p-string",
+  name: "simple-property",
   mixins: [inputMixin],
   components: {
     "text-input": TextInput,
